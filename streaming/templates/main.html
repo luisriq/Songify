@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 </head>
-<body class="grey darken-4">           
+<body>           
 
 <input type="text" name="userInput" id="userInput">
 <div id="time">0s</div>
@@ -20,14 +20,17 @@
 <div id="Pausa">PAUSE</div>
 <div id="Parar">PARAR</div>
 <div id="Adelantar">ADELANTAR</div>
+
 <div id="Background"></div>
 
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.jkit.custom.1.2.16.min.js'%}"></script>
 <script type="text/javascript">
 	var baseUrl = "{{ request.scheme }}://{{ request.get_host }}";
 	var urlFile = baseUrl+"{% url 'getFileUrl'%}";
-	var urlImagen = "{% static 'images/placeholder.png' %}"
+	var urlImagen1 = "{% static 'img/notas_1.gif' %}"
+	var urlImagen2 = "{% static 'img/notas_2.gif' %}"
+	var urlImagen3 = "{% static 'img/notas_3.gif' %}"
 	
 </script>
 

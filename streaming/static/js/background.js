@@ -1,15 +1,22 @@
+$(document).ready(function(){
+	$('body').jKit();
+});
 console.log("dgmkdgmkmdg")
 //Crear capas de imagenes
 var back = $("#Background")
 
-for (var i = 12; i >= 0; i--) {
-	var img = $("<img style='width:100px;height:100px;position:absolute'></img>");
+for (var i = 18; i >= 0; i--) {
+
+	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
 	console.log(img)
 	img.addClass("nota"+(i%3));
-	back.append(img);
+	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)+1)+";axis=x]'>")
+	container.append(img);
+	//container.addClass("nota"+(i%3));
+	back.append(container);
 }
 
-
+//
 function moverRandom(element){
 	
 	var mLeft = (Math.random()*3)-1.5;//>0.5 ? 1:0;
@@ -32,17 +39,26 @@ function moverRandom(element){
 			imagen:'urldefecto'
 		},parametros)
 		console.log(this);
-		var maxHorizontal = Math.floor($(window).width()/100);
-		var maxVertical = Math.floor($(window).height()/100);
+		this.css("height",(parseInt(this.css("height"))*pars.nivel) + 'px')
+		this.css("width",(parseInt(this.css("width"))*pars.nivel) + 'px')
+		this.css("z-index",-pars.nivel)
+		
+		var maxHorizontal = Math.floor($(window).width()/parseInt(this.css("width")));
+		var maxVertical = Math.floor($(window).height()/parseInt(this.css("height")));
 		console.log("Horizontal->"+maxHorizontal);
 		console.log("Vertical->"+maxVertical);
 		console.log("H->"+$(window).height());
 		console.log("W->"+$(window).width());
+		//this[i].parentElement.style.zIndex = -pars.nivel;
+
 		for (var i = this.length - 1; i >= 0; i--) {
-			this[i].style.top = Math.floor(Math.random()*maxVertical)*100+"px";
-			this[i].style.left = Math.floor(Math.random()*maxHorizontal)*100+"px";
-			this[i].style.zIndex = pars.nivel;
 			this[i].src = pars.imagen;
+			this[i].parentElement.style.top = Math.floor(Math.random()*maxVertical)*parseInt(this.css("height"))+"px";
+			this[i].parentElement.style.left = Math.floor(Math.random()*maxHorizontal)*parseInt(this.css("width"))+"px";
+			
+			//this[i].style.height = pars.nivel*this[i].style.height;
+			//this[i].style.width = pars.nivel*this[i].style.width;
+			
 		}
 
 
@@ -55,18 +71,18 @@ function moverRandom(element){
 
 
 var n1 = $(".nota0").notaB({
-	nivel:-1,
-	imagen:urlImagen
+	nivel:1,
+	imagen:urlImagen1
 });
 
 var n2 = $(".nota1").notaB({
-	nivel:-2,
-	imagen:urlImagen
+	nivel:1.3,
+	imagen:urlImagen2
 });
 
 var n3 = $(".nota2").notaB({
-	nivel:-3,
-	imagen:urlImagen
+	nivel:1.7,
+	imagen:urlImagen3
 });
 
 /*for (var i = n.length - 1; i >= 0; i--) {
