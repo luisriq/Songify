@@ -12,7 +12,7 @@ for (var i = 18; i >= 0; i--) {
 	img.addClass("nota"+(i%3));
 	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)+1)+";axis=x]'>")
 	container.append(img);
-	//container.addClass("nota"+(i%3));
+	container.addClass("parent"+(i%3));
 	back.append(container);
 }
 
