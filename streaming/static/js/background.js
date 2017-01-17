@@ -10,7 +10,7 @@ for (var i = 18; i >= 0; i--) {
 	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
 	console.log(img)
 	img.addClass("nota"+(i%3));
-	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)+1)+";axis=x]'>")
+	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)+1)+";axis=both]'>")
 	container.append(img);
 	container.addClass("parent"+(i%3));
 	back.append(container);
