@@ -23,7 +23,7 @@ audioElement.ontimeupdate = function(){
 	//console.log(audioElement.currentTime);
 }
 
-$('#userInput').keyup(nuevoAudio);
+//$('#userInput').keyup(nuevoAudio);
 
 //Controles
 $('#Random').click(nuevoAudio);

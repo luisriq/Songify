@@ -1102,7 +1102,14 @@
 								var offsety = (yaxis-box.top-($that.height()/2))*strength*cnt*-1 - $(this).height()/2 + $that.height()/2;
 								$(this).css({ 'top': offsety+'px' });
 							}
-							
+							if (options.axis == '-y' || options.axis == '-both'){
+								var offsety = -(yaxis-box.top-($that.height()/2))*strength*cnt*-1 - $(this).height()/2 + $that.height()/2;
+								$(this).css({ 'top': offsety+'px' });
+							}
+							if (options.axis == '-x' || options.axis == '-both'){
+								var offsetx = -(xaxis-box.left-($that.width()/2))*strength*cnt*-1 - $(this).width()/2 + $that.width()/2;
+								$(this).css({ 'left': offsetx+'px' });
+							}							
 							cnt++;
 						
 						});

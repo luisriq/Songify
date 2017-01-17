@@ -4,6 +4,12 @@ body{
     background-color: #111111;
 }
 
+#entrada{
+	background: #656;
+}
+.nota0 .nota1 .nota2::selection {
+	background: transparent 
+}
 .parent0{
 	z-index: -1;
 }

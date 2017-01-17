@@ -5,18 +5,19 @@ console.log("dgmkdgmkmdg")
 //Crear capas de imagenes
 var back = $("#Background")
 
-for (var i = 18; i >= 0; i--) {
+for (var i = 24; i >= 0; i--) {
 
 	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
 	console.log(img)
-	img.addClass("nota"+(i%3));
-	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)+1)+";axis=both]'>")
+	img.addClass("nota"+(2-i%3));
+	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)*.5+1)+";axis="+(((i%3)==1)?"-both":"both")+"]'>")
+	console.log(container);
 	container.append(img);
 	container.addClass("parent"+(i%3));
 	back.append(container);
 }
 
-//
+//Unused
 function moverRandom(element){
 	
 	var mLeft = (Math.random()*3)-1.5;//>0.5 ? 1:0;
@@ -36,12 +37,14 @@ function moverRandom(element){
 	$.fn.notaB=function(parametros){
 		pars=$.extend({
 			nivel:0,
+			size:1,
 			imagen:'urldefecto'
 		},parametros)
 		console.log(this);
-		this.css("height",(parseInt(this.css("height"))*pars.nivel) + 'px')
-		this.css("width",(parseInt(this.css("width"))*pars.nivel) + 'px')
+		this.css("height",(parseInt(this.css("height"))*pars.size) + 'px')
+		this.css("width",(parseInt(this.css("width"))*pars.size) + 'px')
 		this.css("z-index",-pars.nivel)
+		this.css("opacity",.8-(3-pars.nivel)*.2)
 		
 		var maxHorizontal = Math.floor($(window).width()/parseInt(this.css("width")));
 		var maxVertical = Math.floor($(window).height()/parseInt(this.css("height")));
@@ -71,17 +74,20 @@ function moverRandom(element){
 
 
 var n1 = $(".nota0").notaB({
+	size:.5,
 	nivel:1,
 	imagen:urlImagen1
 });
 
 var n2 = $(".nota1").notaB({
-	nivel:1.3,
+	size:.7,
+	nivel:2,
 	imagen:urlImagen2
 });
 
 var n3 = $(".nota2").notaB({
-	nivel:1.7,
+	size:1,
+	nivel:3,
 	imagen:urlImagen3
 });
 
