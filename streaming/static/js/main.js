@@ -17,9 +17,9 @@ var pause = function(){
 }
 
 //Cargar nuevo audio
-var nuevoAudio = function(palabraSeleccionada = ""){
-	var data = {palabra:palabraSeleccionada};
-	$.getJSON(urlFile,data,function(data){
+var nuevoAudio = function(){
+	var pa = $(".editable span.mark").text();
+	$.getJSON(urlFile,{palabra:pa==null?"":pa},function(data){
 		//console.log(baseUrl+data["url"]);
 		//audioE = document.createElement('audio');
 		audioElement.pause();
