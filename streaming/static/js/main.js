@@ -32,18 +32,18 @@ var nuevoAudio = function(){
 
 
 //Eventos - Reproductor
-//$("#progreso").hide();
+$("#progreso").hide();
 audioElement.addEventListener("loadedmetadata", function(_event) {
 		console.log(audioElement.duration);
-		$("#progreso").attr("max",Math.trunc(audioElement.duration));
-		$("#progreso2").css("width", "0%");
+		//$("#progreso").attr("max",Math.trunc(audioElement.duration));
+		$("#progreso").css("width", "0%");
 		$("#progreso").show();
 		//document.getElementsByTagName("body")[0].removeChild(audio);
 	});
 audioElement.ontimeupdate = function(){
-	$('#time').text(Math.trunc(audioElement.duration)+"/"+Math.trunc(audioElement.currentTime)+"s");
-	$("#progreso").attr("value",Math.trunc(audioElement.currentTime));
-	$("#progreso2").css("width", (Math.ceil(100*audioElement.currentTime/audioElement.duration))+"%");
+	$('#time').text( Math.trunc(audioElement.currentTime) +"/"+Math.trunc(audioElement.duration)+"s");
+	//$("#progreso").attr("value",Math.trunc(audioElement.currentTime));
+	$("#progreso").css("width", (Math.ceil(100*audioElement.currentTime/audioElement.duration))+"%");
 		
 	//console.log(audioElement.currentTime);
 }
