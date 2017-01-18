@@ -60,7 +60,7 @@ $('#Play').click(function () {
 		play();
 	}
 });
-$('#Pausa').click(function () {
+/*$('#Pausa').click(function () {
     audioElement.pause();
 });
 $('#Parar').click(function () {
@@ -69,6 +69,6 @@ $('#Parar').click(function () {
 });
 $('#Adelantar').click(function () {
 	audioElement.currentTime = (audioElement.currentTime+15.0);
-});
+});*/
 
 
