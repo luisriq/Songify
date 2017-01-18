@@ -19,12 +19,12 @@
 <body class="">    
 <div class="container" style="margin-top: 5vh">
 	<div class="row">
-		<div class="col l6 offset-l3">
+		<div class="col l6 offset-l3 m8 offset-m2 s12">
 			<img src="{% static 'img/songify_2-01.png '%}" class="responsive-img" alt="">
 		</div>
 	</div>
 	<div class="row">
-		<div class="col l4 offset-l4">
+		<div class="col l4 offset-l4 m8 offset-m2 s12">
 			<div id="entrada">
 				<div contenteditable="true" style="width: 100%" class="editable" type="text" name="userInput" id="userInput">
 					Ingrese texto aquí
@@ -35,11 +35,15 @@
 		
 	</div>
 	<div class="row">
-		<div class="col l4 offset-l4  white" style="">
-			 <div class="progress black">
+		<div id="bars" class="col l4 offset-l4 s12 m8 offset-m2 red darken-2" style="">
+			
+		</div>
+		<div class="col l4 offset-l4 s12 m8 offset-m2 white" style="">
+			<i id="Play" class="material-icons">play_circle_outline</i>
+			
+			<div class="progress black">
 		      	<div class="determinate red" id="progreso" style="width: 70%"></div>
 		  	</div>
-			<i id="Play" class="large material-icons">play_circle_outline</i>
 			<span class="badge red white-text" id="time">0s</span>
 		</div>
 	</div>
