@@ -1,7 +1,7 @@
 
 
 body{
-    background-color: #111111;
+	background-color: #111111;
 }
 
 #entrada{
@@ -25,11 +25,6 @@ body{
 	color: red !important;
 }
 
-span{
-	color: red;
-}
-
-
 .highlightTextarea .highlightTextarea-highlighter{
 	color: black !important;
 }
@@ -41,4 +36,45 @@ div.highlightTextarea-container{
 
 div.highlightTextarea-highlighter{
 	height: auto !important;
+}
+
+.editable {
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin: 0px;
+	background: white;
+	min-height: 15px;
+	color: #999;
+}
+
+.editable:focus {
+	border: none;
+}
+
+.editable.typed {
+	color: #333;
+}
+
+.editable.typed  {
+	color: #333;
+	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes example {
+	from {
+		color: #333;
+		text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+	}
+	to {
+		color: #f44336;
+		text-shadow: 0px 0px 3px rgba(255, 50, 50, 0.3);
+	}
+}
+
+.editable.typed .exist {
+	color: #f44336;
+	font-weight:bold;
+	text-shadow: 0px 0px 3px rgba(255, 50, 50, 0.3);
+	animation-name: example;
+	animation-duration: .3s;
 }
