@@ -78,3 +78,8 @@ div.highlightTextarea-highlighter{
 	animation-name: example;
 	animation-duration: .3s;
 }
+.progress.black{
+	width:calc(100% - 110px);
+	display: inline-block;
+	margin: 10px 0;
+}
