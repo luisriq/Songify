@@ -5,6 +5,17 @@ console.log("dgmkdgmkmdg")
 //Crear capas de imagenes
 var back = $("#Background")
 
+//Gausiana
+function randn_bm() {
+    var u = 1 - Math.random(); // Subtraction to flip [0, 1) to (0, 1].
+    var v = 1 - Math.random();
+    var res = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+    if(res <0){
+    	return -1*res;
+    }
+    return res;
+}
+
 for (var i = 24; i >= 0; i--) {
 
 	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
@@ -53,11 +64,44 @@ function moverRandom(element){
 		console.log("H->"+$(window).height());
 		console.log("W->"+$(window).width());
 		//this[i].parentElement.style.zIndex = -pars.nivel;
+		var casilla = function(x, y, mh, mv){
+			var wW = $(window).width();
+			var wH = $(window).height();
+			return {
+				'absX_0':Math.floor(x*wW/mh),
+				'absY_0':Math.floor(y*wH/mv),
+				'ocupado':false
+			};
+		}
+		var arreglo = []
+		for (var i = 0; i < maxHorizontal; i++) {
+			arreglo.push([]);
+			for (var j = 0; j < maxVertical; j++) {
+				arreglo[i].push(casilla(i,j,maxHorizontal,maxVertical));
+			}
+		}
+		console.log(arreglo);
+		//var posiciones = 
+		
 
 		for (var i = this.length - 1; i >= 0; i--) {
-			this[i].src = pars.imagen;
-			this[i].parentElement.style.top = Math.floor(Math.random()*maxVertical)*parseInt(this.css("height"))+"px";
-			this[i].parentElement.style.left = Math.floor(Math.random()*maxHorizontal)*parseInt(this.css("width"))+"px";
+			this[i].src = urlImagenes[Math.floor(Math.random()*2.99)];
+			var ry;
+			var rx;
+			while(true){
+				ry = Math.floor(Math.random()*maxVertical);
+				rx = Math.floor(Math.random()*maxHorizontal);
+				if(!arreglo[rx][ry].ocupado){
+					arreglo[rx][ry].ocupado = true;
+					break;
+				}
+				
+			}
+			var offsetX = Math.floor(Math.random()*Math.abs($(window).width()/maxHorizontal - parseInt(this.css("width"))));
+			var offsetY = Math.floor(Math.random()*Math.abs($(window).height()/maxVertical - parseInt(this.css("height"))));
+			this[i].parentElement.style.top = Math.ceil(arreglo[rx][ry].absY_0 + offsetY)+"px";
+			this[i].parentElement.style.left = Math.ceil(arreglo[rx][ry].absX_0 + offsetX)+"px";//Math.floor(Math.random()*maxHorizontal)*parseInt(this.css("width"))+"px";
+			//Random en la casilla
 			
 			//this[i].style.height = pars.nivel*this[i].style.height;
 			//this[i].style.width = pars.nivel*this[i].style.width;

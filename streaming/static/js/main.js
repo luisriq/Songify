@@ -1,6 +1,20 @@
+
+
 audioElement = document.createElement('audio');
 audioElement.setAttribute('preload', "auto");
-audioElement.setAttribute('loop',"loop")
+audioElement.setAttribute('loop',"loop");
+audioElement.setAttribute('controls',"true");
+
+//Controles 
+var play = function(){
+	audioElement.play();
+	$('#Play').text("pause_circle_outline")
+}
+
+var pause = function(){
+	audioElement.pause();
+	$('#Play').text("play_circle_outline")
+}
 
 //Cargar nuevo audio
 var nuevoAudio = function(){
@@ -10,16 +24,24 @@ var nuevoAudio = function(){
 		audioElement.pause();
 		audioElement.setAttribute('src', baseUrl+data["url"]);
 		audioElement.currentTime = 0;
-		audioElement.play();
+		play();
 		console.log(audioElement);
 	});
 };
 
 
 
-//Eventos
+//Eventos - Reproductor
+//$("#progreso").hide();
+audioElement.addEventListener("loadedmetadata", function(_event) {
+		console.log(audioElement.duration);
+		$("#progreso").attr("max",Math.trunc(audioElement.duration));
+		$("#progreso").show();
+		//document.getElementsByTagName("body")[0].removeChild(audio);
+	});
 audioElement.ontimeupdate = function(){
-	$('#time').text(Math.trunc(audioElement.currentTime)+"s");
+	$('#time').text(Math.trunc(audioElement.duration)+"/"+Math.trunc(audioElement.currentTime)+"s");
+	$("#progreso").attr("value",Math.trunc(audioElement.currentTime));
 	//console.log(audioElement.currentTime);
 }
 
@@ -27,9 +49,12 @@ audioElement.ontimeupdate = function(){
 
 //Controles
 $('#Random').click(nuevoAudio);
-
 $('#Play').click(function () {
-    audioElement.play();
+	if($('#Play').text() == "pause_circle_outline"){
+    	pause();
+	}else{
+		play();
+	}
 });
 $('#Pausa').click(function () {
     audioElement.pause();
@@ -39,7 +64,7 @@ $('#Parar').click(function () {
     audioElement.pause();
 });
 $('#Adelantar').click(function () {
-	audioElement.currentTime = audioElement.currentTime+15;
+	audioElement.currentTime = (audioElement.currentTime+15.0);
 });
 
 

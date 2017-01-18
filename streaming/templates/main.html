@@ -10,29 +10,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.highlighttextarea.min.css' %}">
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
 <body class="">    
-<div class="container" style="margin-top: 20vh">
+<div class="container" style="margin-top: 5vh">
 	<div class="row">
-		<div class="col l4 offset-l4">
-			<img src="" alt="">
+		<div class="col l6 offset-l3">
+			<img src="{% static 'img/songify_2-01.png '%}" class="responsive-img" alt="">
 		</div>
 	</div>
 	<div class="row">
 		<div class="col l4 offset-l4">
 			<div id="entrada">
-				<input style="width: 100%;border:solid 2px #2C60D9;padding:5px" type="text" name="userInput" id="userInput">
+				<div contenteditable="true" style="width: 100%;border:solid 2px #2C60D9;padding:5px" type="text" name="userInput" id="userInput">
+					oioeirngoierngoienrgoierng
+				</div>
+				<!--<input style="width: 100%;border:solid 2px #2C60D9;padding:5px" type="text" name="userInput" id="userInput"><!-->
 			</div>
 		</div>
 		
 	</div>
 	<div class="row">
 		<div class="col l4 offset-l4  white" style="">
+			<progress id="progreso" value="22" max="100"></progress>
 			<div id="time">0s</div>
 			<div id="Random">RANDOM</div>
-			<div id="Play">PLAY</div>
+			<i id="Play" class="large material-icons">play_circle_outline</i>
 			<div id="Pausa">PAUSE</div>
 			<div id="Parar">PARAR</div>
 			<div id="Adelantar">ADELANTAR</div>
@@ -47,14 +54,19 @@
 
 
 <script type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js'%}"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.highlighttextarea.min.js'%}"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <script type="text/javascript" src="{% static 'js/jquery.jkit.custom.1.2.16.js'%}"></script>
 <script type="text/javascript">
 	var baseUrl = "{{ request.scheme }}://{{ request.get_host }}";
 	var urlFile = baseUrl+"{% url 'getFileUrl'%}";
+
 	var urlImagen1 = "{% static 'img/notas_1.gif' %}"
 	var urlImagen2 = "{% static 'img/notas_2.gif' %}"
 	var urlImagen3 = "{% static 'img/notas_3.gif' %}"
+	var urlImagenes = [urlImagen1,urlImagen2,urlImagen3]
 	
 </script>
 
@@ -63,7 +75,13 @@
 
 <script type="text/javascript" src="{% static 'js/background.js' %}"></script>
 
+<script type="text/javascript" src="{% static 'js/highlight.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'js/entrada.js' %}"></script>
+
+
+
+
+
 </body>
 </html>

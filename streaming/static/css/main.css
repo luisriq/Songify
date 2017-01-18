@@ -19,3 +19,26 @@ body{
 .parent2{
 	z-index: -3;
 }
+.highlightTextarea mark{
+	background: transparent;
+	font-weight: bold;
+	color: red !important;
+}
+
+span{
+	color: red;
+}
+
+
+.highlightTextarea .highlightTextarea-highlighter{
+	color: black !important;
+}
+
+div.highlightTextarea-container{
+	height: 30px !important;
+	width: calc(100% - 2px) !important;
+}
+
+div.highlightTextarea-highlighter{
+	height: auto !important;
+}
