@@ -17,7 +17,7 @@ def string2numeric_hash(text):
 def getFileUrl(request):
 	path = settings.MEDIA_ROOT 
 	palabra = request.GET["palabra"]
-	archivos = [f for f in os.listdir(path) if ".mp3" in f]
+	archivos = [f for f in os.listdir(path) if (".mp3" in f or ".wav" in f)]
 	indice = string2numeric_hash(palabra)%len(archivos)
 	if(palabra == ""):
 		return JsonResponse({"url":"/media/"+archivos[randint(0,len(archivos)-1)]})
