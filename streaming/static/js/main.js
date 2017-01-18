@@ -1,4 +1,5 @@
 
+var equalizador = $("#bars").mysticEqualizer({height:"40px"});
 
 audioElement = document.createElement('audio');
 audioElement.setAttribute('preload', "auto");
@@ -8,11 +9,13 @@ audioElement.setAttribute('controls',"true");
 //Controles 
 var play = function(){
 	audioElement.play();
+	equalizador.play();
 	$('#Play').text("pause_circle_outline")
 }
 
 var pause = function(){
 	audioElement.pause();
+	equalizador.stop();
 	$('#Play').text("play_circle_outline")
 }
 
