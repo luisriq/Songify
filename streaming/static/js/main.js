@@ -29,6 +29,9 @@ var nuevoAudio = function(){
 		audioElement.setAttribute('src', baseUrl+data["url"]);
 		audioElement.currentTime = 0;
 		play();
+		$(".reproductor").removeClass("hide");
+		$("#botones").removeClass("hide");
+
 		console.log(audioElement);
 	});
 };
