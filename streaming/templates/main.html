@@ -12,11 +12,20 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.highlighttextarea.min.css' %}">
-  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
-<body class="">    
+<body> 
+<div style="
+	position: absolute;
+	z-index: -100;
+	top:50%; 
+	left:50%; 
+	transform:translate(-50%, -50%); 
+	width:50%; 
+	opacity: .2;
+"><img src="{% static 'img/logo.png '%}" class="responsive-img" alt=""></div>
 <div class="container" style="margin-top: 5vh">
 	<div class="row">
 		<div class="col l6 offset-l3 m10 offset-m1 s12">
@@ -42,26 +51,21 @@
 			<i id="Play" class="material-icons">play_circle_outline</i>
 			
 			<div class="progress black">
-		      	<div class="determinate red" id="progreso" style="width: 70%"></div>
-		  	</div>
+				<div class="determinate red" id="progreso" style="width: 70%"></div>
+			</div>
 			<span class="badge red white-text" id="time">0s</span>
+		</div>
+		<div class="col l4 offset-l4 s12 m8 offset-m2 white" style="padding:0">
+			<button style ="width: 50%;margin:0;border-radius: none;" class="btn waves-effect blue darken-2 waves-light valign-wrapper" type="submit" name="action"  >Facebook
+				<img style="max-width:100%;
+max-height:70%;margin-top: 5px;margin-left: 10px;" class="valign right" src="{% static 'img/facebook-64.png' %}"/>
+			</button><button style ="width: 50%;margin:0;border-radius: none;" class="btn light-blue lighten-1 waves-effect waves-light valign-wrapper" type="submit" name="action">Twitter
+			<img style="height: 30px;margin-top: 3px;margin-left: 10px "  class="valign material-icons right"  src="{% static 'img/Twitter_Social_Icon_White.png' %}"/>
+			</button>
 		</div>
 		
 	</div>
 
-	<div class="row hide" id="botones" style="
-    margin: -10px auto;
-    padding-left: 40px;
-    width: 50%;" >
-			<button class="btn waves-effect blue waves-light valign-wrapper" type="submit" name="action">Facebook
-
-				<img style="max-width:100%;
-max-height:70%;margin-top: 5px;margin-left: 10px;" class="valign right" src="{% static 'img/facebook-64.png' %}"/>
-		  	</button>
-			<button style="background-color:#1dcaff;" class="btn waves-effect waves-light valign-wrapper" type="submit" name="action">Twitter
-			<img style="height: 30px;margin-top: 3px;margin-left: 10px "  class="valign material-icons right"  src="{% static 'img/Twitter_Social_Icon_White.png' %}"/>
-		  	</button>
-		</div>
 </div>       
 
 <div id="Background"></div>
@@ -95,7 +99,6 @@ max-height:70%;margin-top: 5px;margin-left: 10px;" class="valign right" src="{% 
 
 
 <script type="text/javascript" src="{% static 'js/entrada.js' %}"></script>
-
 
 
 

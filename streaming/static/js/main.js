@@ -29,8 +29,9 @@ var nuevoAudio = function(){
 		audioElement.setAttribute('src', baseUrl+data["url"]);
 		audioElement.currentTime = 0;
 		play();
+
 		$(".reproductor").removeClass("hide");
-		$("#botones").removeClass("hide");
+		
 
 		console.log(audioElement);
 	});
@@ -47,7 +48,7 @@ audioElement.addEventListener("loadedmetadata", function(_event) {
 		$("#progreso").show();
 		//document.getElementsByTagName("body")[0].removeChild(audio);
 	});
-audioElement.ontimeupdate = function(){
+	audioElement.ontimeupdate = function(){
 	$('#time').text( Math.trunc(audioElement.currentTime) +"/"+Math.trunc(audioElement.duration)+"s");
 	//$("#progreso").attr("value",Math.trunc(audioElement.currentTime));
 	$("#progreso").css("width", (Math.ceil(100*audioElement.currentTime/audioElement.duration))+"%");
@@ -76,5 +77,10 @@ $('#Parar').click(function () {
 $('#Adelantar').click(function () {
 	audioElement.currentTime = (audioElement.currentTime+15.0);
 });*/
+ $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+     
 
 
