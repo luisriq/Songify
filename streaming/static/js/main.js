@@ -21,10 +21,12 @@ var pause = function(){
 
 //Cargar nuevo audio
 var nuevoAudio = function(){
-	var pa = $(".editable span.mark").text();
-	$.getJSON(urlFile,{palabra:pa==null?"":pa},function(data){
+	var pa = $(".editable").first().text();
+	$.getJSON(urlAnalizador,{frase:pa==null?"":pa},function(data){
 		//console.log(baseUrl+data["url"]);
 		//audioE = document.createElement('audio');
+		//TODO: MArcar las palabras encontradas
+		console.log("PALABRAS ENCONTRADAS->>" + data["palabras"])
 		audioElement.pause();
 		audioElement.setAttribute('src', baseUrl+data["url"]);
 		audioElement.currentTime = 0;

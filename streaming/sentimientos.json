@@ -1,0 +1,102 @@
+[
+  {
+    "sentimiento": "Triste",
+    "palabras": [
+      "triste",
+      "pena",
+      "tristeza",
+      "temeroso"
+    ],
+    "cancion": "Triste-invierno.mp3"
+  },
+  {
+    "sentimiento": "Duda",
+    "palabras": [
+      "pensativo",
+      "melancolico",
+      "melancólico"
+    ],
+    "cancion": "Duda.wav"
+  },
+  {
+    "sentimiento": "Chistoso",
+    "palabras": [
+      "gracioso",
+      "entretenido"
+    ],
+    "cancion": "Chiste.mp3"
+  },
+  {
+    "sentimiento": "Ira",
+    "palabras": [
+      "ira",
+      "irritado",
+      "molesto",
+      "desagradable",
+      "desagrado",
+      "mal",
+      "enojado",
+      "enojada"
+    ],
+    "cancion": "Rabia.mp3"
+  },
+  {
+    "sentimiento": "Feliz",
+    "subsentimientos": [
+      "Buen dia",
+      "Carrete",
+      "Vacaciones"
+    ],
+    "palabras": [
+      "feliz",
+      "alegria",
+      "alegría",
+      "emoción",
+      "emocion",
+      "alegre",
+      "emocionado",
+      "emocionada",
+      "alegres",
+      "contento",
+      "viva"
+    ],
+    "cancion": "Feliz-Buen dia.wav"
+  },
+  {
+    "sentimiento": "Buen dia",
+    "palabras": [
+      "nacimiento",
+      "nacer",
+      "bonito",
+      "bello",
+      "bella",
+      "emoción",
+      "emocion"
+    ],
+    "cancion": "Feliz-Buen dia.wav"
+  },
+  {
+    "sentimiento": "Carrete",
+    "palabras": [
+      "Carrete",
+      "Fiesta",
+      "carreteamos",
+      "carreteando",
+      "entretenido",
+      "entretención",
+      "entretencion"
+    ],
+    "cancion": "Feliz-carrete.wav"
+  },
+  {
+    "sentimiento": "Vacaciones",
+    "palabras": [
+      "vacaciones",
+      "vacacionar",
+      "verano",
+      "viaje",
+      "emociones"
+    ],
+    "cancion": "Feliz-Vacaciones.wav"
+  }
+]

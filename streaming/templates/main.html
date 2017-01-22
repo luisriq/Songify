@@ -83,6 +83,7 @@ max-height:70%;margin-top: 5px;margin-left: 10px;" class="valign right" src="{% 
 <script type="text/javascript">
 	var baseUrl = "{{ request.scheme }}://{{ request.get_host }}";
 	var urlFile = baseUrl+"{% url 'getFileUrl'%}";
+	var urlAnalizador = baseUrl+"{% url 'analizarFrase'%}";
 
 	var urlImagen1 = "{% static 'img/notas_1.gif' %}"
 	var urlImagen2 = "{% static 'img/notas_2.gif' %}"
