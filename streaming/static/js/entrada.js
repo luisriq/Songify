@@ -1,22 +1,165 @@
 var timerCargarAudio = null;
 var timerHighlight = null;
 var entrada = $("#userInput");
+var indices = []
+var vuelta = 4;
+var j_sentimientos = [
+  {
+    "sentimiento": "Triste",
+    "palabras": [
+      "triste",
+      "pena",
+      "tristeza",
+      "temeroso"
+    ]
+  },
+  {
+    "sentimiento": "Duda",
+    "palabras": [
+      "pensativo",
+      "melancolico",
+      "melancólico"
+    ]
+  },
+  {
+    "sentimiento": "Chistoso",
+    "palabras": [
+      "gracioso",
+      "entretenido"
+    ]
+  },
+  {
+    "sentimiento": "Ira",
+    "palabras": [
+      "ira",
+      "irritado",
+      "molesto",
+      "desagradable",
+      "desagrado",
+      "mal",
+      "enojado",
+      "enojada"
+    ]
+  },
+  {
+    "sentimiento": "Feliz",
+    "subsentimientos": [
+      "buen dia",
+      "carrete",
+      "vacaciones"
+    ],
+    "palabras": [
+      "feliz",
+      "alegria",
+      "alegría",
+      "emoción",
+      "emocion",
+      "alegre",
+      "emocionado",
+      "emocionada",
+      "alegres",
+      "contento",
+      "viva"
+    ]
+  },
+  {
+    "sentimiento": "Buen dia",
+    "palabras": [
+      "nacimiento",
+      "nacer",
+      "bonito",
+      "bello",
+      "bella",
+      "emoción",
+      "emocion"
+    ]
+  },
+  {
+    "sentimiento": "Carrete",
+    "palabras": [
+      "carrete",
+      "fiesta",
+      "carreteamos",
+      "carreteando",
+      "entretenido",
+      "entretención",
+      "entretencion"
+    ]
+  },
+  {
+    "sentimiento": "Vacaciones",
+    "palabras": [
+      "vacaciones",
+      "vacacionar",
+      "verano",
+      "viaje",
+      "emociones"
+    ]
+  }
+]
+var funGetSentimientosIndex = function(Palabras){
+	var indexes = [];
 
+	for (var i = 0; i < j_sentimientos.length; i++) {
+
+		var palabrasEncontradas = [];
+		for (var j = 0; j < Palabras.length; j++) {
+			Palabras[j]
+			if(Palabras[j].toLocaleLowerCase()=="buen"&&Palabras[j+1]=="día"){
+				Palabras[j]="Buen día";
+				Palabras[j].splice(j+1, 1);
+			}
+			if(j_sentimientos[i].palabras.indexOf(Palabras[j])>-1){
+				palabrasEncontradas.push(Palabras[j]);
+				if(j_sentimientos[i].subsentimientos){
+					k = [j]
+					for (var _k = 0; _k < Palabras.length; _k++) {
+						if(_k==j)continue;
+						__k = j_sentimientos[i].subsentimientos.indexOf(Palabras[_k].toLocaleLowerCase());
+						if(__k>=0){
+							k.push(_k);
+						}
+					}
+					indexes.push(k);	
+				}else{
+					indexes.push([j])
+				}
+			}
+			
+		}
+		
+	}
+	return indexes;
+}
 var funHighlight = function () {
-	$(".editable span.mark").removeClass('mark');
+	console.log(vuelta,indices);
+	$(".editable span.mark").removeClass('mark').addClass("nMrk");
+
 	var len = $(".editable span").length;
 	var i = Math.floor(Math.random()*len);
-	$($(".editable span")[i]).addClass('mark');
-	var j = Math.floor(Math.random()*5);
-	if(j==0&&$($(".editable span")[i]).text().length>3){
+	while(indices.indexOf(i)!=-1)
+		i = Math.floor(Math.random()*len);
+	
+	
+	
+	if(vuelta==0){
+		$(".editable span.mark").removeClass('mark').addClass("nMrk");
+		for (var i = 0; i < indices.length; i++) {
+			$($(".editable span")[indices[i]]).addClass('mark').removeClass('nMrk');
+		}
 		timerCargarAudio =  setTimeout(nuevoAudio, 2000);
 	}else{
+		vuelta--;
+		$($(".editable span")[i]).addClass('mark').removeClass('nMrk');
 		timerHighlight =  setTimeout(funHighlight, 500);
 	}
 }
 
 $("#userInput").keyup(
+
 	function(){
+		indices=[]
+		vuelta = 5;
 		pause();
 		if(timerCargarAudio != null){
 			clearTimeout(timerCargarAudio);
@@ -30,6 +173,16 @@ $("#userInput").keyup(
 		if(timerHighlight != null){
 			clearTimeout(timerHighlight);
 		}
+		var a = $(".editable span").map(function(){
+               return $.trim($(this).text());
+            }).get();
+		var ar = funGetSentimientosIndex(a);
+		if(ar.length>0){
+			ar.sort(function(a, b) {
+				return b.length-a.length;
+			});
+			indices=ar[0];
+		}
 		timerHighlight =  setTimeout(funHighlight, 500);
 });
 
@@ -38,7 +191,7 @@ $("#userInput").keyup(
 var helper = {
 	// highlight: regex replacer function
 	highlight: function (match, word, offset, string){
-		return '<span>' + word + '</span>';
+		return '<span class="nMrk">' + word + '</span>';
 	},
 	
 	// keyIsAvailable
