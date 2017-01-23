@@ -151,7 +151,8 @@ var funHighlight = function () {
 	}else{
 		vuelta--;
 		$($(".editable span")[i]).addClass('mark').removeClass('nMrk');
-		timerHighlight =  setTimeout(funHighlight, 500);
+		if($(".editable").text()!="")
+			timerHighlight =  setTimeout(funHighlight, 500);
 	}
 }
 
