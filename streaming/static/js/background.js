@@ -15,8 +15,10 @@ function randn_bm() {
     }
     return res;
 }
-
-for (var i = 24; i >= 0; i--) {
+var maxNotas = 30
+var cantidadDeNotas = (Math.floor($(window).width()/80))*3
+if(cantidadDeNotas > maxNotas) cantidadDeNotas = maxNotas;
+for (var i = cantidadDeNotas; i >= 0; i--) {
 
 	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
 	console.log(img)
@@ -83,12 +85,20 @@ function moverRandom(element){
 		console.log(arreglo);
 		//var posiciones = 
 		
+		var posicionDisponible = function(arregloPosiciones){
+			for (var i = arregloPosiciones.length - 1; i >= 0; i--) {
+				for (var j = arregloPosiciones[i].length - 1; j >= 0; j--) {
+					if(!arregloPosiciones[i][j].ocupado) return true;
+				}
+			}
 
+			return false;
+		}
 		for (var i = this.length - 1; i >= 0; i--) {
 			this[i].src = urlImagenes[Math.floor(Math.random()*2.99)];
 			var ry;
 			var rx;
-			while(true){
+			while(true && posicionDisponible(arreglo)){
 				ry = Math.floor(Math.random()*maxVertical);
 				rx = Math.floor(Math.random()*maxHorizontal);
 				if(!arreglo[rx][ry].ocupado){
@@ -101,6 +111,7 @@ function moverRandom(element){
 			var offsetY = Math.floor(Math.random()*Math.abs($(window).height()/maxVertical - parseInt(this.css("height"))));
 			this[i].parentElement.style.top = Math.ceil(arreglo[rx][ry].absY_0 + offsetY)+"px";
 			this[i].parentElement.style.left = Math.ceil(arreglo[rx][ry].absX_0 + offsetX)+"px";//Math.floor(Math.random()*maxHorizontal)*parseInt(this.css("width"))+"px";
+			
 			//Random en la casilla
 			
 			//this[i].style.height = pars.nivel*this[i].style.height;
@@ -130,8 +141,8 @@ var n2 = $(".nota1").notaB({
 });
 
 var n3 = $(".nota2").notaB({
-	size:1,
-	nivel:3,
+	size:.9,
+	nivel:2.5,
 	imagen:urlImagen3
 });
 
