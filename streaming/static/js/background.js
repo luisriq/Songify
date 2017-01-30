@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('body').jKit();
 });
-console.log("dgmkdgmkmdg")
+
 //Crear capas de imagenes
 var back = $("#Background")
 
@@ -21,10 +21,10 @@ if(cantidadDeNotas > maxNotas) cantidadDeNotas = maxNotas;
 for (var i = cantidadDeNotas; i >= 0; i--) {
 
 	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
-	console.log(img)
+	//console.log(img)
 	img.addClass("nota"+(2-i%3));
 	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)*.5+1)+";axis="+(((i%3)==1)?"-both":"both")+"]'>")
-	console.log(container);
+	//console.log(container);
 	container.append(img);
 	container.addClass("parent"+(i%3));
 	back.append(container);
@@ -53,7 +53,7 @@ function moverRandom(element){
 			size:1,
 			imagen:'urldefecto'
 		},parametros)
-		console.log(this);
+		//console.log(this);
 		this.css("height",(parseInt(this.css("height"))*pars.size) + 'px')
 		this.css("width",(parseInt(this.css("width"))*pars.size) + 'px')
 		this.css("z-index",-pars.nivel)
@@ -61,10 +61,10 @@ function moverRandom(element){
 		
 		var maxHorizontal = Math.floor($(window).width()/parseInt(this.css("width")));
 		var maxVertical = Math.floor($(window).height()/parseInt(this.css("height")));
-		console.log("Horizontal->"+maxHorizontal);
+		/*console.log("Horizontal->"+maxHorizontal);
 		console.log("Vertical->"+maxVertical);
 		console.log("H->"+$(window).height());
-		console.log("W->"+$(window).width());
+		console.log("W->"+$(window).width());*/
 		//this[i].parentElement.style.zIndex = -pars.nivel;
 		var casilla = function(x, y, mh, mv){
 			var wW = $(window).width();
@@ -82,7 +82,7 @@ function moverRandom(element){
 				arreglo[i].push(casilla(i,j,maxHorizontal,maxVertical));
 			}
 		}
-		console.log(arreglo);
+		//console.log(arreglo);
 		//var posiciones = 
 		
 		var posicionDisponible = function(arregloPosiciones){

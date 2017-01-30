@@ -2,9 +2,12 @@
 var equalizador = $("#bars").mysticEqualizer({height:"40px"});
 
 audioElement = document.createElement('audio');
+
 audioElement.setAttribute('preload', "auto");
 audioElement.setAttribute('loop',"loop");
 audioElement.setAttribute('controls',"true");
+var audioSource = document.createElement('source');
+audioElement.append(audioSource)
 
 //Controles 
 var play = function(){
@@ -26,16 +29,19 @@ var nuevoAudio = function(){
 		//console.log(baseUrl+data["url"]);
 		//audioE = document.createElement('audio');
 		//TODO: MArcar las palabras encontradas
-		console.log("PALABRAS ENCONTRADAS->>" + data["palabras"])
-		audioElement.pause();
-		audioElement.setAttribute('src', baseUrl+data["url"]);
+		//console.log("PALABRAS ENCONTRADAS->>" + data["palabras"])
+		pause();
+		audioSource.setAttribute('src', baseUrl+data["url"]);
+		//audioSource.setAttribute('type', "audio/x-wav");
+
 		audioElement.currentTime = 0;
+		audioElement.load();
 		play();
 
 		$(".reproductor").removeClass("hide");
 		
 
-		console.log(audioElement);
+		//console.log(audioElement);
 	});
 };
 
@@ -44,13 +50,13 @@ var nuevoAudio = function(){
 //Eventos - Reproductor
 $("#progreso").hide();
 audioElement.addEventListener("loadedmetadata", function(_event) {
-		console.log(audioElement.duration);
+		//console.log("Se cargo la metadata:"+audioElement.duration);
 		//$("#progreso").attr("max",Math.trunc(audioElement.duration));
 		$("#progreso").css("width", "0%");
 		$("#progreso").show();
 		//document.getElementsByTagName("body")[0].removeChild(audio);
 	});
-	audioElement.ontimeupdate = function(){
+audioElement.ontimeupdate = function(){
 	$('#time').text( Math.trunc(audioElement.currentTime) +"/"+Math.trunc(audioElement.duration)+"s");
 	//$("#progreso").attr("value",Math.trunc(audioElement.currentTime));
 	$("#progreso").css("width", (Math.ceil(100*audioElement.currentTime/audioElement.duration))+"%");

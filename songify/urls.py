@@ -17,12 +17,13 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from streaming.views import main, getFileUrl, analizarFrase
+from streaming.views import main, getFileUrl, analizarFrase, mediaProxyWav
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', main),
     url(r'^url/',getFileUrl, name="getFileUrl"),
-    url(r'^analizarFrase/',analizarFrase, name="analizarFrase")
+    url(r'^analizarFrase/',analizarFrase, name="analizarFrase"),
+    url(r'^mediaProxyWav/(?P<archivo>.*)$',mediaProxyWav, name="mediaProxyWav")
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
