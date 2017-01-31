@@ -10,7 +10,6 @@ var audioSource = document.createElement('source');
 audioElement.append(audioSource)
 
 //Para auto play en moviles
-
 $("#userInput").click(function(){
 	if(audioSource.src == ""){
 		//Dummy audio

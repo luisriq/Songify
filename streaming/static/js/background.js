@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	$('body').jKit();
 });
+//Dimensiones gif
+var gifAlto = 200
+var gifAncho = 126
+
 
 //Crear capas de imagenes
 var back = $("#Background")
@@ -20,7 +24,7 @@ var cantidadDeNotas = (Math.floor($(window).width()/80))*3
 if(cantidadDeNotas > maxNotas) cantidadDeNotas = maxNotas;
 for (var i = cantidadDeNotas; i >= 0; i--) {
 
-	var img = $("<img style='width:126px;height:200px;position:relative;'></img>");
+	var img = $("<img style='width:"+gifAncho+"px;height:"+gifAlto+"px important!;position:relative;'></img>");
 	//console.log(img)
 	img.addClass("nota"+(2-i%3));
 	var container = $("<div style='position:absolute;' data-jkit='[parallax:strength="+((i%3)*.5+1)+";axis="+(((i%3)==1)?"-both":"both")+"]'>")
@@ -54,8 +58,12 @@ function moverRandom(element){
 			imagen:'urldefecto'
 		},parametros)
 		//console.log(this);
-		this.css("height",(parseInt(this.css("height"))*pars.size) + 'px')
-		this.css("width",(parseInt(this.css("width"))*pars.size) + 'px')
+		this.css("height",(gifAlto*pars.size) + 'px')
+		/*console.log("cssHeight "+this.css("height"))
+		console.log("csswidth "+this.css("width"))
+		console.log("pars.size "+pars.size)
+		console.log("height "+(parseInt(this.css("height"))*pars.size) + 'px')*/
+		this.css("width",(gifAncho*pars.size) + 'px')
 		this.css("z-index",-pars.nivel)
 		this.css("opacity",.8-(3-pars.nivel)*.2)
 		
