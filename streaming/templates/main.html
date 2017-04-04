@@ -79,8 +79,8 @@ max-height:70%;margin-top: 5px;margin-left: 10px;" class="valign right" src="{% 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-<script src="https://dl.dropboxusercontent.com/u/14243582/jscalc/js/rangy-core.js"></script>
-<script src="https://dl.dropboxusercontent.com/u/14243582/jscalc/js/rangy-selectionsaverestore.js"></script>
+<script src="{% static 'js/rangy-core.js' %}"></script>
+<script src="{% static 'js/rangy-selectionsaverestore.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.jkit.custom.1.2.16.js'%}"></script>
 <script type="text/javascript">
 	var baseUrl = "{{ request.scheme }}://{{ request.get_host }}";
